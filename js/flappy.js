@@ -18,7 +18,7 @@ var balloons = [];
 var weight = [];
 var mor = [];
 var splashDisplay;
-
+var openText;
 
 
 $.get("/score", function(scores){
@@ -51,7 +51,7 @@ function start() {
     background.height = 400;
 
 
-    game.add.text(175, 20, "The Game is on!",
+    openText = game.add.text(175, 20, "The Game is on!",
         {font: "50px Reprise Stamp ", fill: "#FFFFFF"});
     player = game.add.sprite(40, 200, "playerImg");
     player.width = 75;
@@ -122,7 +122,8 @@ function preload() {
     game.load.image("weight", "../assets/mag.jpg");
     game.load.image("mor", "../assets/mor2.png");
     game.load.image("logo", "../assets/opening.png");
-
+    game.load.audio("splash", "../assets/splashdisplay.mp3");
+    game.load.audio("gameaudio", "../assets/gameWAV.wav");
 }
 
 function playerJump() {
@@ -138,13 +139,20 @@ function create() {
     //var splashDisplay = game.add.image(0, 0, "logo");
     //splashDisplay.width = 790;
     //splashDisplay.height = 400;
-    splashDisplay = game.add.text(100,200, "Press ENTER to start, SPACEBAR to jump! ", {fill: "white"});
+
+    //splashDisplay = game.sound.play("splash");
+    splashDisplay = game.add.image(0, 0, "logo");
+    splashDisplay.width = 790;
+    splashDisplay.height = 400;
+    splashDisplay = game.add.text(250, 50, "Don't be an Anderson...", {fill:"white"});
+    splashDisplay = game.add.text(100, 100, "Press ENTER to start, SPACEBAR to jump! ", {fill: "#006B8F"});
+    splashDisplay = game.add.text(420, 150, "Beware of Moriarty!", {fill: "#006B8F"});
 
     game.input.keyboard
         .addKey(Phaser.Keyboard.ENTER)
         .onDown.add(start);
 
-
+    game.sound.play("gameaudio");
 }
 
 
@@ -213,6 +221,7 @@ function generatePipe() {
         }
     }
     changeScore(1);
+    openText.destroy()
 }
 
 

@@ -54,6 +54,15 @@ a:visited {
     border: 2px solid gray;
     border-radius: 5px;
     padding: 20px;
-    color:red;
+    color:black;
     font-size: 14px;
+}
+
+#save {
+    color: red;
+    font-size: 20px;
+}
+
+#copyright {
+    font-size: 10px;
 }
