@@ -1,3 +1,5 @@
+/**/
+
 // the Game object used by the phaser.io library
 var stateActions = {preload: preload, create: create, update: update};
 var score = -1;
